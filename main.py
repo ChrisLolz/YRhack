@@ -40,6 +40,8 @@ async def help(ctx):
   embed1.add_field(name = 'covid vaccine(region, date)', value = 'Gives covid vaccination progress at a specific time, province/health region in Canada. ',inline = True)
   embed1.add_field(name = 'covid cases(region date)', value = 'Gives covid cases, death at a specific time, province/health region in Canada. ',inline = True)
 
+  await ctx.send(embed = embed1)
+
 @client.command(name = 'advice')
 async def update(ctx,region):
   try: 

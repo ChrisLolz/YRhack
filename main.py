@@ -226,11 +226,11 @@ def getNumCase(region,timing):
   else:
     json1 = r.json()
     if 'health_region' in json1['summary'][0]:
-      a = int(json1['summary'][0]['health_region'])
+      a = json1['summary'][0]['health_region']
     else:
       a = -1 
-    json=[int(json1["summary"][0]['province']),
-    int(json1["summary"][0]['date']),
+    json=[json1["summary"][0]['province'],
+    json1["summary"][0]['date'],
     int(json1["summary"][0]['cumulative_cases']), 
     int(json1["summary"][0]['cases']),
     int(json1['summary'][0]['deaths']),

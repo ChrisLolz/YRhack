@@ -14,7 +14,7 @@ from datetime import timedelta
 client = commands.Bot(command_prefix="covid ")
 client.remove_command('help')
 
-dateCurrent = str(date.today().day-1) + '-'+str(date.today().month) + "-" + str(date.today().year) 
+dateCurrent = str(date.today().day) + '-'+str(date.today().month) + "-" + str(date.today().year) 
 
 
 def dayBack(dateNow):
@@ -24,7 +24,7 @@ def dayBack(dateNow):
   return str(yesterday.day)+"-"+str(yesterday.month)+"-"+str(yesterday.year)
 
 if datetime.now().hour < 2:
-  dateCurrent = dayBack(dateCurrent)
+  dateCurrent = dayBack(dayBack(dateCurrent))
 
 
 @client.command()
@@ -38,7 +38,6 @@ async def help(ctx):
   embed1.add_field(name="covid cases(region, date)", value="Gives covid statistics for a given region in canada",inline="true")
   embed1.add_field(name = 'covid general(region, date)', value= 'Gives general covid statistics for a province/health region in Canada. ',inline = True)
   embed1.add_field(name = 'covid vaccine(region, date)', value = 'Gives covid vaccination progress at a specific time, province/health region in Canada. ',inline = True)
-  embed1.add_field(name = 'covid cases(region date)', value = 'Gives covid cases, death at a specific time, province/health region in Canada. ',inline = True)
 
   await ctx.send(embed = embed1)
 
@@ -179,7 +178,6 @@ async def cases(ctx, region='canada', timing='-1'):
   if timing == '-1':
     timing = dateCurrent
     # else return error 
-  
   await ctx.send(embed = getCOVIDEmbed(region,timing,'General Status'))
 
 @client.command(name = "cases")

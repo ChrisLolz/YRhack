@@ -14,7 +14,7 @@ from datetime import timedelta
 client = commands.Bot(command_prefix="covid ")
 client.remove_command('help')
 
-dateCurrent = str(date.today().day) + '-'+str(date.today().month) + "-" + str(date.today().year) 
+dateCurrent = str(date.today().day-1) + '-'+str(date.today().month) + "-" + str(date.today().year) 
 
 
 def dayBack(dateNow):
@@ -23,7 +23,7 @@ def dayBack(dateNow):
   yesterday = today - timedelta(days = 1)
   return str(yesterday.day)+"-"+str(yesterday.month)+"-"+str(yesterday.year)
 
-if datetime.now().hour < 22:
+if datetime.now().hour < 2:
   dateCurrent = dayBack(dateCurrent)
 
 
